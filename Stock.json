@@ -1,0 +1,37 @@
+ [
+
+           {
+
+              "Stock Name" : "Reliance",
+
+              "Stock symbol":"&",
+    
+              "No of share" : 50,
+    
+              "Each share Price" : 250000
+
+           },
+
+           {
+            "Stock Name" : "Vodafone",
+
+            "Stock symbol":"@",
+    
+            "No of share" : 40,
+  
+            "Each share Price" : 200000   
+    
+           },
+
+           {
+            "Stock Name" : "Airtel",
+
+            "Stock symbol":"$",
+    
+            "No of share" : 45,
+  
+            "Each share Price" : 225000   
+    
+           }
+    
+        ]
