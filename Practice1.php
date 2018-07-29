@@ -1,18 +1,12 @@
 <?php
-$jsonString = file_get_contents('inven.json');
+$jsonString = file_get_contents('rohit.json');
 $data = json_decode($jsonString, true);
 
-
-$data[0]['activity_name'] = "TENNIS";
-// or if you want to change all entries with activity_code "1"
 foreach ($data as $key => $entry) {
-    if ($entry['activity_code'] == '1') {
-        $data[$key]['activity_name'] = "TABLE TENNIS";
+    if ($entry['Stock Symbol'] == $symbol) {
+        $data[$key]['No of Share'] = $s1;
     }
 }
-    $data = json_encode([
-       'data1' => 'hello',
-        'data2' => 'world' ]);
-File::append('inven.json', $data);
-
+$newJsonString = json_encode($data);
+file_put_contents('rohit.json', $newJsonString);
 ?>

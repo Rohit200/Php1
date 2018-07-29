@@ -3,14 +3,12 @@ class Node
 {
     public $data;
     public $next;
-    public $left;
-    public $right;
+  
     public function __construct($data)
     {
       $this->data=$data;
       $this->next=NULL;
-      $this->left=NULL;
-      $this->right=NULL;
+     
     }
     public function readNode()
     {
