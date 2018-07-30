@@ -4,6 +4,7 @@ include 'Linkedlist.php';
 
  function createAccount()
 {
+    $fname=Null;$lname=Null;$mobile=0;$n=Null;$sname=Null;$dname=Null;$stname=Null;$zipno=0;$idno=Null;
     $u1=new Utility();
     echo "Enter your locality name \n";
     $str=$u1->getString();
@@ -15,24 +16,78 @@ include 'Linkedlist.php';
        if(file_exists($str)!=1)
        {
     echo "Enter the First name \n";
-    $fname=$u1->getString();
+    $fname1=$u1->getString();
+    if(is_numeric($fname1)!=1)
+    {
+        $fname=$fname1;
+    }
+    else
+    echo "Enter correct nmme \n";
     echo "Enter the last name \n";
-    $lname=$u1->getString();
+    $lname1=$u1->getString();
+    if(is_numeric($lname1)!=1)
+    {
+        $lname=$lname1;
+    }
+    else
+    echo "Enter correct name \n";
     echo "Enter the mobile number \n";
-    $mobile=$u1->getString();
+    $mobile1=$u1->getString();
+    if(filter_var($mobile1,FILTER_VALIDATE_INT))
+    {
+        $mobile=$mobile1;
+    }
+    else
+    echo "Enter correct mobile no \n";
     echo "Enter the address \n";
     echo "Enter the Street number \n";
-    $n=$u1->getString();
+    $n1=$u1->getString();
+    if(filter_var($n1,FILTER_VALIDATE_INT))
+    {
+        $n=$n1;
+    }
+    else
+    echo "Enter correct street no \n";
     echo "Enter the Street name \n";
-    $sname=$u1->getString();
+    $sname1=$u1->getString();
+    if(is_numeric($sname1)!=1)
+    {
+        $sname=$sname1;
+    }
+    else
+    echo "Enter correct street name \n";
     echo "Enter the district name \n";
-    $dname=$u1->getString();
+    $dname1=$u1->getString();
+    if(is_numeric($dname1)!=1)
+    {
+        $dname=$dname1;
+    }
+    else
+    echo "Enter correct district name \n";
     echo "Enter the State name \n";
-    $stname=$u1->getString();
+    $stname1=$u1->getString();
+    if(is_numeric($stname1)!=1)
+    {
+        $stname=$stname1;
+    }
+    else
+    echo "Enter correct state name \n";
     echo "Enter the Zip code \n";
-    $zipno=$u1->getString();
+    $zipno1=$u1->getString();
+    if(filter_var($zipno1,FILTER_VALIDATE_INT))
+    {
+        $zipno=$zipno1;
+    }
+    else
+    echo "Enter correct Zipno \n";
     echo "Enter your Aadhar number \n";
-    $idno=$u1->getString();
+    $idno1=$u1->getString();
+    if(filter_var($idno1,FILTER_VALIDATE_INT))
+    {
+        $idno=$idno1;
+    }
+    else
+    echo "Enter correct id no \n";
     $txt = '[ {"First name":"' . $fname.'","Last name":"' . $lname .'","Mobile number":' . $mobile .
          ',"Street number":' . $n .',"Street name":"' . $sname .'","District name":"' . $dname . 
          '","State name":"' . $stname . '","Zip code":' . $zipno .',"Aadhar number":' . $idno .     '}]';
@@ -40,12 +95,22 @@ include 'Linkedlist.php';
          $myfile=fopen($str,"w");
          fwrite($myfile,$txt);
          fclose($myfile);
+         $filecontent=file_get_contents($str);
+    $json=json_decode($filecontent);
+   $n=sizeof($json);
+     if($n==0)
+{
+    unlink($str);
+    echo "Sorry Account has not created \n";
+}
     }
     else{
         $filecontent=file_get_contents($str);
         $json=json_decode($filecontent,true);
         echo "Enter your Aadhar number \n";
         $idno=$u1->getString();
+        if(filter_var($idno,FILTER_VALIDATE_INT))
+        {
         $i=0;
         while($i<sizeof($json))
         {
@@ -57,23 +122,77 @@ include 'Linkedlist.php';
         }
         if($i>=sizeof($json))
         {
-        echo "Enter the First name \n";
-        $fname=$u1->getString();
-        echo "Enter the last name \n";
-        $lname=$u1->getString();
-        echo "Enter the mobile number \n";
-        $mobile=$u1->getString();
-        echo "Enter the address \n";
-        echo "Enter the Street number \n";
-        $n=$u1->getString();
-        echo "Enter the Street name \n";
-        $sname=$u1->getString();
-        echo "Enter the district name \n";
-        $dname=$u1->getString();
-        echo "Enter the State name \n";
-        $stname=$u1->getString();
-        echo "Enter the Zip code \n";
-        $zipno=$u1->getString();
+            echo "Enter the First name \n";
+            $fname1=$u1->getString();
+            if(is_numeric($fname1)!=1)
+            {
+                $fname=$fname1;
+            }
+            else
+            echo "Enter correct nmme \n";
+            echo "Enter the last name \n";
+            $lname1=$u1->getString();
+            if(is_numeric($lname1)!=1)
+            {
+                $lname=$lname1;
+            }
+            else
+            echo "Enter correct name \n";
+            echo "Enter the mobile number \n";
+            $mobile1=$u1->getString();
+            if(filter_var($mobile1,FILTER_VALIDATE_INT))
+            {
+                $mobile=$mobile1;
+            }
+            else
+            echo "Enter correct mobile no \n";
+            echo "Enter the address \n";
+            echo "Enter the Street number \n";
+            $n1=$u1->getString();
+            if(filter_var($n1,FILTER_VALIDATE_INT))
+            {
+                $n=$n1;
+            }
+            else
+            echo "Enter correct street no \n";
+            echo "Enter the Street name \n";
+            $sname1=$u1->getString();
+            if(is_numeric($sname1)!=1)
+            {
+                $sname=$sname1;
+            }
+            else
+            echo "Enter correct street name \n";
+            echo "Enter the district name \n";
+            $dname1=$u1->getString();
+            if(is_numeric($dname1)!=1)
+            {
+                $dname=$dname1;
+            }
+            else
+            echo "Enter correct district name \n";
+            echo "Enter the State name \n";
+            $stname1=$u1->getString();
+            if(is_numeric($stname1)!=1)
+            {
+                $stname=$stname1;
+            }
+            else
+            echo "Enter correct state name \n";
+            echo "Enter the Zip code \n";
+            $zipno1=$u1->getString();
+            if(filter_var($zipno1,FILTER_VALIDATE_INT))
+            {
+                $zipno=$zipno1;
+            }
+            else
+            echo "Enter correct Zipno \n";
+            echo "Enter your Aadhar number \n";
+            $idno1=$u1->getString();
+            if(filter_var($idno1,FILTER_VALIDATE_INT))
+            {
+                $idno=$idno1;
+            }
                             $AdditionalArray = array(
                                 'First name' => $fname,
                                 'Last name' => $lname,
@@ -96,6 +215,9 @@ include 'Linkedlist.php';
                         }
                         else
                         echo "Your address already present \n";
+                    }
+                    else
+                    echo "enter correct id no \n";
     }
 }
     else
@@ -141,37 +263,71 @@ include 'Linkedlist.php';
       {
           case 1:echo "Enter the updated first name \n";
               $txt=$u1->getString();
+              if(is_numeric($txt)!=1)
+              {
               $json[$i]['First name']=$txt;
+              }
+              else
+              echo "Please enter the correct name \n";
                   break;
           case 2:echo "Enter the last name to update information \n";
                  $txt=$u1->getString();
+                 if(is_numeric($txt)!=1)
+                 {
                 $json[$i]['Last name']=$txt;
+                 }
+                 else
+                 echo "Please enter the correct name \n";
                 break;
           case 3:echo "Enter the update mobile number \n";
-                  $txt=$u1->getString();  
-                $json[$i]['Mobile number']=$txt;
-                  
-                break;
+                  $txt=$u1->getString(); 
+                  if(filter_var($txt,FILTER_VALIDATE_int))
+                  { 
+                  $json[$i]['Mobile number']=$txt;
+                  }
+                  else
+                  echo "Enter correct mobile number \n";
+                  break;
           case 4: echo "Enter the updated street number \n";
                   $txt=$u1->getString();
+                  if(filter_var($txt,FILTER_VALIDATE_int))
+                  {
                   $json[$i]['Street number']=$txt;
+                  }
+                  else 
+                  echo "Enter correct Street number \n";
                    break;
           case 5: echo "Enter the updated Street name \n";
+          
                    $txt=$u1->getString();
+                   if(is_numeric($txt)!=1)
                    $json[$i]['Street name']=$txt;
+                   else
+                   echo "Enter correct Street name \n";
                     break;
           case 6:echo "Enter the updated District name \n";
                  $txt=$u1->getString();
+                 if(is_numeric($txt)!=1)
                  $json[$i]['District name']=$txt;
+                 else
+                 echo "Enter correct District name \n";
                  break;
           case 7:echo "Enter the updated State name \n";
                  $txt=$u1->getString();
+                 if(is_numeric($txt)!=1)
                  $json[$i]['State name']=$txt;
+                 else
+                 echo "Enter correct state name \n";
                  break;
           case 8:echo "Enter the updated Zip code \n";
                 $txt=$u1->getString();
+                if(filter_var($txt,FILTER_VALIDATE_int))
+                {
                 $json[$i]['Zip code']=$txt;
+                }
+                echo "Enter correct Zip code \n";
                   break;
+         default :echo "You have chosen wrong option \n";
       }
       $newJsonString = json_encode($json);
       file_put_contents($str, $newJsonString);
@@ -280,6 +436,7 @@ include 'Linkedlist.php';
          case 8:
                $json[0]['Zip code']=Null;
                  break;
+        default :echo "You have chosen wrong option \n";
      }
      $newJsonString = json_encode($json);
      file_put_contents($str, $newJsonString);
@@ -349,6 +506,8 @@ function sorting()
     $str=strtolower($str);
     $str=ucfirst($str);
     $str=$str.".json";
+    if(file_exists($str))
+    {
     echo "Enter your Aadhar number \n";
        $idno=$u1->getString();
     $filecontent=file_get_contents($str);
@@ -395,9 +554,15 @@ function sorting()
                  break;
          case 8:integersort($str,"Zip code");
                 break;
+         default :echo "You have chosen wrong option \n";
      }
     }
 }
+else
+   echo "Aadhar number not present \n";
+    }
+    else
+    echo "Enter correct locality name \n";
 }
 
 ?>
